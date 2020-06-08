@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+
+      .container {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        width: 14%;
+        height: 90px;
+      }
+
+      .time {
+        color: white;
+        background: black;
+        width: 90px;
+        /* height: 50%; */
+        text-align: center;
+        font-size: 5rem;
+        border-radius: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="time minutes"><span class="time-span-top">0</span></div>
+      <div class="time seconds"><span class="time-span-bottom">0</span></div>
+      <div class="time minutes"><span class="time-span-top">0</span></div>
+      <div class="time seconds"><span class="time-span-bottom">0</span></div>
+    </div>
+
+    <script>
+      setInterval(() => {
+        const timeNow = new Date(),
+          minutesElement = document.querySelectorAll(".minutes span"),
+          secondsElement = document.querySelectorAll(".seconds span");
+
+        for (let i = 0; i < minutesElement.length; i++) {
+          minutesElement[i].innerText = timeNow.getMinutes();
+          secondsElement[i].innerText = timeNow.getSeconds();
+        }
+      }, 1000);
+    </script>
+  </body>
+</html>
